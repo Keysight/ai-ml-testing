@@ -13,9 +13,9 @@ PFC is very relevant to AI/ML usecases. With PFC one can make sure the AI?ML swi
 1. Prioritizing traffic
 2. Congestion handling
 
-## PFC testing area
+## PFC testing areas
 Testing PFC functionality is one of the key area of validation of AI/ML switch fabric. This test plan convers comprehensive testing of PFC and draws inspiration from established test methodologies used by SONiC community. Here are the different areas of PFC that we will explore in this test plan.
-* PFC pause lossless
-* PFC pause lossy
-* PFC pause response headroom
-* PFC congestion oversubscription
+* [PFC pause lossless](PFC-pause-lossless.md)
+* [PFC pause lossy](PFC-pause-lossy.md)
+* [PFC pause response headroom](PFC-pause-response-time.md)
+* [PFC congestion oversubscription](PFC-congestion-oversubscription.md)

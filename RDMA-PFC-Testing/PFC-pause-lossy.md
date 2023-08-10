@@ -1,4 +1,4 @@
-# Validating PFC pause for lossless queue
+# Validating PFC pause for lossy queue
 ## Introduction
 PFC pause is the mechanish used by PFC to perform flow control during a congestion. When a switch determines there is a congestion happening in the downstream network it starts sending a PFC pause packet to let its upstream neighbor know about the congestion and the high priority queue which is configured to be lossless to slow down or pause the transmit. This test plan will validate performance of a lossless traffic flow under congestion. 
 
@@ -15,7 +15,7 @@ The testbed consists of two IXIA ports and a SONiC device under test (DUT) as fo
 IXIA tx port ------ |   DUT   |------ IXIA rx port
                     |_________|
 ```
-## Experiment Steps
+## Test Steps
 In this experiment, we need to create three traffic items:
 
 Test data traffic: Data packets sent from the IXIA tx port to the IXIA rx port at the lossy priorities (e.g., 0-2 and 5-7) that we want to test. Note that the packets should be marked with the correct DSCP value. The traffic demand should be 50% of the line rate.
@@ -25,13 +25,8 @@ Background data traffic: Data packets sent from the IXIA tx port to the IXIA rx 
 PFC pause storm: Persistent PFC pause frames from the IXIA rx port to the IXIA tx port. The priorities of PFC pause frames should be same as those of test data traffic. And the inter-frame transmission interval should be smaller than per-frame pause duration.
 
 This experiment needs the following five steps:
-
-Start PFC pause storm.
-
-After a fixed duration (e.g., 1 second), start test data traffic and background data traffic simultaneously.
-
-After a fixed duration (e.g., 5 seconds), stop test data traffic and background data traffic.
-
-Check if the IXIA rx port receives all the sent frames of test data traffic and background data traffic.
-
-Stop PFC pause storm
+- Start PFC pause storm.
+- After a fixed duration (e.g., 1 second), start test data traffic and background data traffic simultaneously.
+- After a fixed duration (e.g., 5 seconds), stop test data traffic and background data traffic.
+- Check if the IXIA rx port receives all the sent frames of test data traffic and background data traffic.
+- Stop PFC pause storm
